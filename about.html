@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Meet Savora Avenue: a welcoming table for Southern and West African, Southeast Asian and European-inspired dishes made for sharing.">
+  <title>Our Story | Savora Avenue</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Hanken+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --pine:#27243f;--pine-2:#34304e;--saffron:#aa4d39;--paper:#f3ead8;
+      --ink:#f3ead8;--mute:#d3c8b7;--serif:'Times New Roman',Georgia,serif;
+      --sans:'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;
+      --olive:#111321;--gold-light:#df896c;--dark-ink:#111321;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--sans);color:var(--ink);background:var(--olive);line-height:1.7;font-size:17px}
+    a{color:inherit}
+    :focus-visible{outline:3px solid var(--gold-light);outline-offset:3px}
+    .wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+    header{background:var(--pine);color:var(--paper);border-bottom:1px solid rgba(198,107,82,.35)}
+    nav{display:flex;align-items:center;justify-content:space-between;padding:25px 0;gap:20px}
+    .logo{position:relative;display:inline-flex;flex:0 0 auto;line-height:0;text-decoration:none}
+    .logo img{display:block;width:150px;height:100px;object-fit:contain;transition:transform .25s ease,filter .25s ease}
+    .logo-part{position:absolute;z-index:2;border:0;background:transparent;cursor:pointer}
+    .logo-smoke{left:50%;top:3%;width:25%;height:24%;transform:translateX(-50%)}
+    .logo-utensils{left:41%;top:38%;width:22%;height:17%}
+    .logo-smoke::before,.logo-smoke::after{content:"";position:absolute;bottom:-5%;width:30%;height:82%;border-radius:52% 48% 50% 50%;border-left:2px solid rgba(255,248,224,.92);border-top:1px solid rgba(255,248,224,.28);filter:blur(1px);opacity:0;pointer-events:none}
+    .logo-smoke::before{left:27%;animation:smoke-drift 2.4s ease-in-out infinite}
+    .logo-smoke::after{right:22%;height:68%;animation:smoke-drift 2.8s .55s ease-in-out infinite}
+    .logo-utensils::before,.logo-utensils::after{content:none}
+    .logo:has(.logo-utensils:hover) img{animation:utensils-wiggle .65s ease-in-out infinite alternate;filter:brightness(1.1) drop-shadow(0 5px 8px rgba(223,137,108,.22))}
+    @keyframes smoke-drift{0%{transform:translate(3px,10px) scale(.65) rotate(-12deg);opacity:0}20%{opacity:.85}55%{transform:translate(-5px,-5px) scale(.9) rotate(9deg)}100%{transform:translate(7px,-22px) scale(1.2) rotate(-6deg);opacity:0}}
+    @keyframes utensils-wiggle{from{transform:rotate(-1deg) translateY(1px)}to{transform:rotate(1deg) translateY(-2px)}}
+    nav ul{display:flex;gap:28px;list-style:none;align-items:center}
+    nav ul a{text-decoration:none;font-weight:500;font-size:.9rem;letter-spacing:.04em}
+    nav ul a:hover,nav ul a[aria-current="page"]{color:var(--gold-light)}
+    .btn{display:inline-block;background:var(--saffron);color:var(--dark-ink);font-weight:700;text-decoration:none;padding:13px 24px;border-radius:2px;border:1px solid var(--saffron);letter-spacing:.06em;text-transform:uppercase;transition:background .2s,border-color .2s}
+    .btn:hover{background:var(--gold-light);border-color:var(--gold-light)}
+    .btn.ghost{background:transparent;color:var(--paper);border-color:rgba(198,107,82,.65)}
+    .btn.ghost:hover{border-color:var(--gold-light);color:var(--gold-light)}
+    .about-hero{position:relative;overflow:hidden;padding:76px 0 84px;background:radial-gradient(ellipse at 18% 48%,var(--pine-2) 0%,var(--pine) 70%)}
+    .about-hero .wrap{display:grid;grid-template-columns:1fr .95fr;gap:68px;align-items:center}
+    .eyebrow{color:var(--gold-light);font-size:.78rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
+    h1,.section-title{font-family:'Great Vibes',cursive;font-weight:400;color:transparent;background:linear-gradient(110deg,#a87924 0%,#e8cb7c 28%,#fff2bb 43%,#c3963e 53%,#f2dc94 68%,#a87924 100%);background-size:220% 100%;background-position:100% 0;-webkit-background-clip:text;background-clip:text;animation:shine 5s ease-in-out infinite}
+    h1{max-width:11ch;margin-top:12px;font-size:clamp(4rem,7vw,6.3rem);line-height:1.08}
+    .hero-copy{max-width:47ch;margin:22px 0 30px;color:var(--mute);font-size:1.1rem}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+    .hero-photo{position:relative;min-height:440px;margin:0}
+    .hero-photo img,.story-photo img{display:block;width:100%;height:100%;object-fit:cover}
+    .hero-photo img{position:absolute;inset:0;border:1px solid rgba(198,107,82,.65);box-shadow:14px 14px 0 rgba(18,22,14,.32)}
+    .photo-note{position:absolute;right:-14px;bottom:22px;max-width:230px;padding:17px 20px;background:var(--paper);color:var(--dark-ink);font-family:var(--serif);font-size:1.05rem;line-height:1.4;box-shadow:0 8px 24px rgba(18,22,14,.2)}
+    section{padding:86px 0}
+    .story{background:var(--olive)}
+    .story-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:76px;align-items:center}
+    .story-photo{height:500px;position:relative}
+    .story-photo img{border:1px solid rgba(198,107,82,.6)}
+    .story-copy{max-width:58ch}
+    .section-title{font-size:clamp(3.2rem,5vw,4.6rem);line-height:1.15}
+    .story-copy p{margin-top:19px;color:var(--mute)}
+    .story-copy p strong{color:var(--paper);font-weight:700}
+    .values{background:var(--paper);color:var(--dark-ink)}
+    .values-heading{max-width:700px;margin:0 auto 44px;text-align:center}
+    .values-heading .eyebrow{color:var(--gold-light)}
+    .values-heading h2{margin-top:8px;font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);font-weight:400;line-height:1.2}
+    .values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .value-card{padding:28px 26px;border-top:2px solid var(--saffron);background:var(--pine-2);color:var(--ink)}
+    .value-card span{color:var(--gold-light);font-family:var(--serif);font-size:1.15rem}
+    .value-card h3{margin:12px 0 8px;font-family:var(--serif);font-size:1.3rem;font-weight:400}
+    .value-card p{color:var(--mute);font-size:.96rem}
+    .visit-section{background:var(--olive)}
+    .visit-heading,.reviews-heading{max-width:700px;margin:0 auto 38px;text-align:center}
+    .visit-heading h2,.reviews-heading h2{margin-top:8px;font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);font-weight:400;line-height:1.2}
+    .visit-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:28px;align-items:stretch}
+    .visit-details,.map-frame,.review-card{border:1px solid rgba(198,107,82,.45);background:var(--pine-2)}
+    .visit-details{padding:28px}
+    .visit-details h3{font-family:var(--serif);font-size:1.45rem;font-weight:400}
+    .visit-details p{margin-top:12px;color:var(--mute)}
+    .map-frame{display:block;width:100%;min-height:320px}
+    .map-note{margin-top:10px;color:var(--mute);font-size:.9rem}
+    .reviews{background:var(--pine)}
+    .reviews-heading p:last-child{margin-top:12px;color:var(--mute)}
+    .reviews-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+    .review-card{padding:24px}
+    .review-card p{color:var(--mute)}
+    .review-card .review-label{margin-bottom:12px;color:var(--gold-light);font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+    .review-card blockquote{font-family:var(--serif);font-size:1.2rem;line-height:1.45}
+    .closing{padding:78px 0;background:var(--pine);border-top:1px solid rgba(198,107,82,.35);text-align:center}
+    .closing .wrap{max-width:760px}
+    .closing h2{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);font-weight:400;line-height:1.2}
+    .closing p{max-width:52ch;margin:16px auto 26px;color:var(--mute)}
+    footer{padding:38px 0;background:var(--pine);color:var(--mute);border-top:1px solid rgba(198,107,82,.35);font-size:.95rem}
+    footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+    .footer-note{font-size:.88rem}
+    @media(max-width:860px){
+      .about-hero .wrap,.story-grid{grid-template-columns:1fr;gap:42px}
+      .hero-photo{min-height:360px;margin-right:14px}
+      .story-photo{height:390px}
+      .values-grid{grid-template-columns:1fr;gap:14px}
+      nav ul li:not(:last-child){display:none}
+    }
+    @media(max-width:520px){
+      .wrap{padding:0 20px}
+      nav{padding:20px 0}
+      .about-hero{padding:58px 0 66px}
+      section{padding:66px 0}
+      .hero-photo{min-height:290px}
+      .story-photo{height:320px}
+      .photo-note{right:-10px;max-width:195px}
+      footer .wrap{align-items:flex-start;flex-direction:column}
+    }
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      h1,.section-title{animation:none;background-position:50% 0}
+    }
+    h1,.section-title{font-family:var(--serif);font-weight:700;color:var(--ink);background:none;animation:none}
+    .hero-copy{color:var(--mute)}
+    .photo-note,.values,.value-card{color:var(--ink)}
+    .value-card{background:var(--pine-2);border-color:var(--saffron)}
+    .values-heading .eyebrow,.value-card span{color:var(--gold-light)}
+    .value-card p,footer{color:var(--mute)}
+    .btn{color:var(--ink)}
+    nav ul a:not(.btn){color:var(--ink)}
+    nav ul a:not(.btn):hover,nav ul a:not(.btn)[aria-current="page"]{color:var(--gold-light)}
+    .btn.ghost{color:var(--ink)}
+    .btn:hover{background:#903e2d;border-color:#903e2d}
+    @media(max-width:980px){
+      nav{flex-wrap:wrap;padding:18px 0;gap:12px}
+      nav ul{flex:1 1 100%;justify-content:center;flex-wrap:wrap;gap:8px clamp(12px,3vw,24px)}
+      nav ul li:not(:last-child){display:list-item}
+      nav ul a{display:flex;min-height:44px;align-items:center;padding:6px 4px}
+      nav ul .btn{padding:10px 16px}
+      .values-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .story-photo{height:min(48vw,390px)}
+      .reviews-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media(max-width:560px){
+      .wrap{padding-right:18px;padding-left:18px}
+      .logo img{width:132px;height:88px}
+      nav{padding:14px 0}
+      nav ul{column-gap:12px;row-gap:2px}
+      nav ul a{font-size:.84rem}
+      h1{font-size:clamp(2.8rem,11vw,3.8rem);line-height:1.06}
+      .about-hero{padding:52px 0 60px}
+      section{padding:58px 0}
+      .about-hero .wrap,.story-grid{gap:32px}
+      .hero-photo{min-height:280px;margin-right:10px}
+      .story-photo{height:290px}
+      .values-grid{grid-template-columns:1fr}
+      .visit-grid{grid-template-columns:1fr}
+      .reviews-grid{grid-template-columns:1fr}
+      .map-frame{min-height:280px}
+      .value-card{padding:23px 21px}
+      .photo-note{right:-10px;bottom:14px;padding:13px 15px}
+      .hero-actions .btn{flex:1 1 100%;text-align:center;min-height:46px}
+      footer .wrap{align-items:flex-start;flex-direction:column}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav aria-label="Main navigation">
+        <a class="logo" href="index.html"><img src="logo.png" alt="Savora Avenue logo"><span class="logo-part logo-smoke" aria-hidden="true"></span><span class="logo-part logo-utensils" aria-hidden="true"></span></a>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="occasions.html">Occasions</a></li>
+          <li><a href="about.html" aria-current="page">About</a></li>
+          <li><a class="btn" href="index.html#book">Book a table</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="about-hero" aria-labelledby="about-title">
+      <div class="wrap">
+        <div>
+          <p class="eyebrow">A little about us</p>
+          <h1 id="about-title">A table without borders.</h1>
+          <p class="hero-copy">Savora Avenue brings the warmth of a shared meal together with the bright, generous flavours of kitchens around the world. Come curious. Leave feeling at home.</p>
+          <div class="hero-actions">
+            <a class="btn" href="index.html#book">Join us at the table</a>
+            <a class="btn ghost" href="menu.html">Explore the menu</a>
+          </div>
+        </div>
+        <figure class="hero-photo">
+          <img src="resturant.jpg" alt="Warmly lit restaurant dining room set for an evening service" fetchpriority="high">
+          <figcaption class="photo-note">Shared stories, warm plates.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="story" aria-labelledby="story-title">
+      <div class="wrap story-grid">
+        <figure class="story-photo">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&amp;fit=crop&amp;w=1100&amp;q=85" alt="A carefully prepared meal served at a restaurant table" loading="lazy">
+        </figure>
+        <div class="story-copy">
+          <p class="eyebrow">Our point of view</p>
+          <h2 class="section-title" id="story-title">Many places. One welcoming table.</h2>
+          <p>Some of the best meals begin with a simple invitation: pull up a chair, pass a plate, try a little of this. That feeling is at the heart of Savora Avenue.</p>
+          <p>Our menu takes inspiration from <strong>Southern and West African cooking, Southeast Asian flavours, parts of Europe, and South America (Mexican)</strong>. Each brings its own character, ingredients and traditions. We bring those inspirations together with care, keeping the flavours distinct and making room for everyone at the table.</p>
+          <p>No passport required, and no need to choose just one favourite. Come for a relaxed dinner, mark a special occasion, or gather friends and order a few plates for the middle.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="values" aria-labelledby="values-title">
+      <div class="wrap">
+        <div class="values-heading">
+          <p class="eyebrow">What matters to us</p>
+          <h2 id="values-title">A good meal is more than what’s on the plate.</h2>
+        </div>
+        <div class="values-grid">
+          <article class="value-card">
+            <span>01</span>
+            <h3>Cook with curiosity</h3>
+            <p>We celebrate the stories and traditions behind every kitchen that inspires our menu.</p>
+          </article>
+          <article class="value-card">
+            <span>02</span>
+            <h3>Make room at the table</h3>
+            <p>Come as you are, bring your favourite people, and let the meal unfold at its own pace.</p>
+          </article>
+          <article class="value-card">
+            <span>03</span>
+            <h3>Share generously</h3>
+            <p>Order a few things for the table, pass them around, and discover a new favourite together.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="visit-section" aria-labelledby="visit-title">
+      <div class="wrap">
+        <div class="visit-heading">
+          <p class="eyebrow">Come find us</p>
+          <h2 id="visit-title">A welcoming table in Fourways.</h2>
+        </div>
+        <div class="visit-grid">
+          <div class="visit-details">
+            <h3>Savora Avenue</h3>
+            <p>Fourways, Johannesburg, South Africa</p>
+            <p class="map-note">The map shows the general Fourways area.</p>
+            <p><strong>Phone:</strong> +27 11 000 0000</p>
+          </div>
+          <div>
+            <iframe class="map-frame" title="Map of the Fourways area in Johannesburg" src="https://maps.google.com/maps?q=Fourways%2C%20Johannesburg%2C%20South%20Africa&amp;z=13&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <p class="map-note"><a href="https://maps.google.com/?q=Fourways%2C%20Johannesburg%2C%20South%20Africa" target="_blank" rel="noopener noreferrer">Open the Fourways map in Google Maps</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews" aria-labelledby="reviews-title">
+      <div class="wrap">
+        <div class="reviews-heading">
+          <p class="eyebrow">Kind words</p>
+          <h2 id="reviews-title">A few reasons to gather.</h2>
+          <p>These are fictional illustrative quotes, not verified customer reviews. Replace them with real guest feedback before publishing.</p>
+        </div>
+        <div class="reviews-grid">
+          <article class="review-card">
+            <blockquote>“A lovely evening, with warm service and plenty of interesting flavours to share.”</blockquote>
+          </article>
+          <article class="review-card">
+            <blockquote>“We enjoyed trying dishes from different kitchens. The whole table found a new favourite.”</blockquote>
+          </article>
+          <article class="review-card">
+            <blockquote>“A relaxed place to meet friends, share a few plates and take our time.”</blockquote>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing" aria-labelledby="closing-title">
+      <div class="wrap">
+        <p class="eyebrow">Your seat is waiting</p>
+        <h2 id="closing-title">Come hungry. Leave connected.</h2>
+        <p>Whether it’s a weeknight dinner or a long-overdue get-together, we’d love to welcome you to Savora Avenue.</p>
+        <a class="btn" href="index.html#book">Request a table</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <a class="logo" href="index.html"><img src="logo.png" alt="Savora Avenue logo"><span class="logo-part logo-smoke" aria-hidden="true"></span><span class="logo-part logo-utensils" aria-hidden="true"></span></a>
+      <p class="footer-note">Different kitchens. One table.</p>
+    </div>
+  </footer>
+</body>
+</html>
