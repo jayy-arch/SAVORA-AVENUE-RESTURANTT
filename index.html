@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Savora Avenue | Different kitchens, one table</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Hanken+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pine:#27243f; --pine-2:#34304e; --saffron:#aa4d39; --chili:#aa4d39;
+  --paper:#f3ead8; --ink:#f3ead8; --mute:#d3c8b7;
+  --serif:'Times New Roman',Georgia,serif;
+  --sans:'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --olive:#111321; --gold-light:#df896c; --dark-ink:#111321;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--olive);line-height:1.7;font-size:17px}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold-light);outline-offset:3px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+
+/* nav */
+header{background:var(--pine);color:var(--paper);border-bottom:1px solid rgba(198,107,82,.35)}
+nav{display:flex;align-items:center;justify-content:space-between;padding:25px 0;gap:20px}
+.logo{position:relative;display:inline-flex;flex:0 0 auto;line-height:0;text-decoration:none}
+.logo img{display:block;width:150px;height:100px;object-fit:contain;transition:transform .25s ease,filter .25s ease}
+.logo-part{position:absolute;z-index:2;border:0;background:transparent;cursor:pointer}
+.logo-smoke{left:50%;top:3%;width:25%;height:24%;transform:translateX(-50%)}
+.logo-utensils{left:41%;top:38%;width:22%;height:17%}
+.logo-smoke{pointer-events:auto}
+.logo-smoke::before,.logo-smoke::after{content:"";position:absolute;bottom:-5%;width:30%;height:82%;border-radius:52% 48% 50% 50%;border-left:2px solid rgba(255,248,224,.92);border-top:1px solid rgba(255,248,224,.28);filter:blur(1px);opacity:0;pointer-events:none}
+.logo-smoke::before{left:27%;animation:smoke-drift 2.4s ease-in-out infinite}
+.logo-smoke::after{right:22%;height:68%;animation:smoke-drift 2.8s .55s ease-in-out infinite}
+.logo:has(.logo-smoke:hover) .logo-utensils{animation:none}
+.logo-utensils::before,.logo-utensils::after{content:none}
+.logo:has(.logo-utensils:hover) img{animation:utensils-wiggle .65s ease-in-out infinite alternate;filter:brightness(1.1) drop-shadow(0 5px 8px rgba(223,137,108,.22))}
+@keyframes smoke-drift{0%{transform:translate(3px,10px) scale(.65) rotate(-12deg);opacity:0}20%{opacity:.85}55%{transform:translate(-5px,-5px) scale(.9) rotate(9deg)}100%{transform:translate(7px,-22px) scale(1.2) rotate(-6deg);opacity:0}}
+@keyframes utensils-wiggle{from{transform:rotate(-1deg) translateY(1px)}to{transform:rotate(1deg) translateY(-2px)}}
+@keyframes logo-shine{50%,100%{background-position:0 0}}
+nav ul{display:flex;gap:28px;list-style:none;align-items:center}
+nav ul a{text-decoration:none;font-weight:500;font-size:.9rem;letter-spacing:.04em}
+nav ul a:hover{color:var(--gold-light)}
+.btn{display:inline-block;background:var(--saffron);color:var(--dark-ink);font-weight:700;text-decoration:none;padding:13px 24px;border-radius:2px;border:1px solid var(--saffron);cursor:pointer;font:inherit;font-weight:700;letter-spacing:.06em;text-transform:uppercase;transition:background .2s,color .2s,border-color .2s}
+.btn:hover{background:var(--gold-light);border-color:var(--gold-light)}
+.btn.ghost{background:transparent;color:var(--paper);border-color:rgba(198,107,82,.65)}
+.btn.ghost:hover{border-color:var(--gold-light);color:var(--gold-light)}
+
+/* hero */
+.hero{background:radial-gradient(ellipse at 82% 45%,var(--pine-2) 0%,var(--pine) 62%);color:var(--paper);padding:78px 0 104px}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}
+h1{font-family:'Great Vibes',cursive;font-weight:400;font-size:clamp(4rem,8vw,7rem);line-height:1.1;letter-spacing:0;max-width:13ch;color:transparent;background:linear-gradient(110deg,#a87924 0%,#e8cb7c 28%,#fff2bb 43%,#c3963e 53%,#f2dc94 68%,#a87924 100%);background-size:220% 100%;background-position:100% 0;-webkit-background-clip:text;background-clip:text;animation:logo-shine 5s ease-in-out infinite}
+.hero p.lead{margin:26px 0 34px;max-width:46ch;font-size:1.15rem;color:var(--mute)}
+.hero .actions{display:flex;gap:14px;flex-wrap:wrap}
+.open{margin-top:34px;font-size:.95rem;color:var(--mute)}
+.open b{color:var(--saffron);font-weight:700}
+
+.board{background:var(--paper);color:var(--dark-ink);padding:34px 34px 28px;border:1px solid var(--gold-light);border-radius:2px;transform:rotate(1deg);box-shadow:12px 14px 0 rgba(18,22,14,.32)}
+.board h2{font-family:var(--serif);font-weight:400;font-size:1.5rem;margin-bottom:4px}
+.board .sub{color:#514d5f;font-size:.9rem;margin-bottom:18px}
+.board ul{list-style:none}
+.board li{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:13px 0;border-top:1px solid rgba(39,36,63,.18)}
+.board li small{grid-column:1;color:#514d5f;font-weight:700;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase}
+.board li strong{font-weight:500}
+.board li span{grid-row:1;grid-column:2;font-weight:700}
+.board li{opacity:0;animation:rise .6s ease forwards}
+.board li:nth-child(1){animation-delay:.25s}.board li:nth-child(2){animation-delay:.4s}
+.board li:nth-child(3){animation-delay:.55s}.board li:nth-child(4){animation-delay:.7s}
+.board li:nth-child(5){animation-delay:.85s}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+section{padding:88px 0;background:var(--olive)}
+h2.big{font-family:'Great Vibes',cursive;font-weight:400;font-size:clamp(3rem,5vw,4.4rem);line-height:1.15;max-width:18ch;color:transparent;background:linear-gradient(110deg,#a87924 0%,#e8cb7c 28%,#fff2bb 43%,#c3963e 53%,#f2dc94 68%,#a87924 100%);background-size:220% 100%;background-position:100% 0;-webkit-background-clip:text;background-clip:text;animation:logo-shine 5s ease-in-out infinite}
+.intro{max-width:56ch;color:var(--mute);margin:18px 0 48px}
+.row{display:grid;grid-template-columns:200px 1fr 1fr;gap:20px 40px;padding:30px 0;border-top:1px solid rgba(198,107,82,.4);align-items:baseline}
+.row:last-child{border-bottom:1px solid rgba(198,107,82,.4)}
+.row h3{font-family:var(--serif);font-weight:400;font-size:1.7rem}
+.row p{max-width:44ch}
+.row .dishes{display:grid;gap:12px}
+.row .dish{display:grid;grid-template-columns:1fr auto;gap:0 12px;font-weight:700}
+.row .dish span{white-space:nowrap}
+.row .dish em{grid-column:1;display:block;font-style:normal;font-weight:400;color:var(--mute);font-size:.95rem;margin-top:2px}
+.row .dish span{grid-column:2;grid-row:1/span 2;align-self:center}
+
+.visit{min-height:0;padding:56px 0;background:var(--pine);color:var(--paper);border-top:1px solid rgba(198,107,82,.35)}
+.visit .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,500px);gap:36px;align-items:center}
+.visit h2{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,4vw,3rem);line-height:1.1}
+.visit .booking-copy{max-width:38ch;color:var(--mute);margin-top:16px}
+dl{margin-top:26px;display:grid;grid-template-columns:110px 1fr;gap:12px 16px}
+dt{font-weight:700}
+form{position:relative;width:100%;max-width:500px;min-height:380px;justify-self:end;background:var(--paper);color:var(--dark-ink);padding:22px;border:1px solid var(--gold-light);border-radius:2px;display:grid;gap:10px;box-shadow:0 18px 45px rgba(18,22,14,.22)}
+label{display:grid;gap:6px;font-weight:500;font-size:.95rem}
+input,select{width:100%;min-width:0;font:inherit;padding:9px 10px;border:1px solid #c8c0ab;border-radius:2px;background:#fffdf7;color:var(--dark-ink)}
+.two{display:grid;grid-template-columns:1.3fr 1fr;gap:12px}
+form .btn{background:var(--saffron);color:var(--dark-ink);border-color:var(--saffron);text-align:center}
+form .btn:hover{background:var(--gold-light);border-color:var(--gold-light)}
+#msg{font-weight:700;color:var(--dark-ink);min-height:1.2em}
+#msg .status-check{position:absolute;top:50%;left:50%;z-index:2;display:grid;width:104px;height:104px;place-items:center;border-radius:50%;background:#34724a;color:#fff;box-shadow:0 8px 24px rgba(17,19,33,.3);opacity:0;pointer-events:none;transform:translate(-50%,-50%) scale(.35)}
+#msg .status-check svg{width:60px;height:60px}
+#msg .status-check path{stroke-dasharray:24;stroke-dashoffset:24}
+#msg.is-success .status-check{animation:check-pop 1.35s ease-out forwards}
+#msg.is-success .status-check path{animation:check-draw .4s .15s ease-out forwards}
+@keyframes check-pop{0%{opacity:0;transform:translate(-50%,-50%) scale(.35)}14%{opacity:1;transform:translate(-50%,-50%) scale(1.12)}28%,76%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-50%) scale(.8)}}
+@keyframes check-draw{to{stroke-dashoffset:0}}
+
+
+.quote blockquote{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.2rem);line-height:1.3;max-width:28ch}
+.quote cite{display:block;margin-top:18px;font-style:normal;color:var(--mute);font-size:.95rem}
+
+footer{background:var(--pine);color:var(--mute);padding:44px 0;font-size:.95rem;border-top:1px solid rgba(198,107,82,.35)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+@media(max-width:860px){
+  .hero .wrap,.visit .wrap{grid-template-columns:1fr;gap:48px}
+  .row{grid-template-columns:1fr;gap:10px}
+  nav ul li:not(:last-child){display:none}
+  .board{transform:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .board li{animation:none;opacity:1}
+  h1,h2.big{animation:none;background-position:50% 0}
+  #msg.is-success .status-check,#msg.is-success .status-check path{animation:none}
+  #msg.is-success .status-check{position:static;width:auto;height:auto;margin-right:8px;background:none;color:#34724a;box-shadow:none;opacity:1;transform:none}
+  #msg.is-success .status-check svg{width:20px;height:20px}
+  #msg.is-success .status-check path{stroke-dashoffset:0}
+  html{scroll-behavior:auto}
+}
+h1,h2.big{font-family:var(--serif);font-weight:700;color:var(--ink);background:none;animation:none}
+.hero p.lead,.open,footer{color:var(--mute)}
+.board,.visit form{color:var(--dark-ink)}
+.board .sub,.board li small{color:#514d5f}
+.board li{border-color:rgba(39,36,63,.18)}
+input,select{background:var(--pine-2);color:var(--ink);border-color:rgba(223,137,108,.55)}
+#msg{color:var(--dark-ink)}
+.btn{color:var(--ink)}
+nav ul a:not(.btn){color:var(--ink)}
+nav ul a:not(.btn):hover,nav ul a:not(.btn)[aria-current="page"]{color:var(--gold-light)}
+.btn.ghost{color:var(--ink)}
+.btn:hover{background:#903e2d;border-color:#903e2d}
+form .btn{color:var(--paper)}
+form .btn:hover{color:var(--dark-ink)}
+@media(max-width:980px){
+  nav{flex-wrap:wrap;padding:18px 0;gap:12px}
+  nav ul{flex:1 1 100%;justify-content:center;flex-wrap:wrap;gap:8px clamp(12px,3vw,24px)}
+  nav ul li:not(:last-child){display:list-item}
+  nav ul a{display:flex;min-height:44px;align-items:center;padding:6px 4px}
+  nav ul .btn{padding:10px 16px}
+}
+@media(max-width:560px){
+  .wrap{padding-right:18px;padding-left:18px}
+  .logo img{width:132px;height:88px}
+  nav{padding:14px 0}
+  nav ul{column-gap:12px;row-gap:2px}
+  nav ul a{font-size:.84rem}
+  h1{font-size:clamp(3rem,12vw,4rem);line-height:1.04}
+  .hero{padding:54px 0 66px}
+  .hero .wrap,.visit .wrap{gap:34px}
+  .hero p.lead{font-size:1.05rem}
+  .board{padding:24px 20px}
+  .two{grid-template-columns:1fr}
+  form{padding:20px}
+  form .btn{width:100%;min-height:46px}
+  footer .wrap{align-items:flex-start;flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav aria-label="Main">
+      <a class="logo" href="index.html"><img src="logo.png" alt="Savora Avenue logo"><span class="logo-part logo-smoke" aria-hidden="true"></span><span class="logo-part logo-utensils" aria-hidden="true"></span></a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="occasions.html">Occasions</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a class="btn" href="#book">Book a table</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Different kitchens. One table.</h1>
+      <p class="lead">Portuguese, Cape Malay, Mexican and other dishes from around the world, cooked side by side. Order one plate, or share all four.</p>
+      <div class="actions">
+        <a class="btn" href="#book">Book a table</a>
+        <a class="btn ghost" href="menu.html">See the full menu</a>
+      </div>
+      
+    </div>
+
+    <aside class="board" aria-label="Tonight's board">
+      <h2>On the board tonight</h2>
+      <p class="sub">Prices in rand.</p>
+      <ul>
+        <li><strong>Cape Malay Bobotie</strong><span>R178</span><small>South Africa</small></li>
+        <li><strong>Mozambican Peri-peri Prawns</strong><span>R205</span><small>Mozambique</small></li>
+        <li><strong>Oaxaca Chicken Mole</strong><span>R198</span><small>Mexico</small></li>
+        <li><strong>Miso-glazed Aubergine</strong><span>R152</span><small>Japan</small></li>
+        <li><strong>Wild Mushroom Risotto</strong><span>R175</span><small>Italy</small></li>
+      </ul>
+    </aside>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2 class="big">Where each plate comes from</h2>
+    <p class="intro">Explore dishes inspired by kitchens around the world, with each plate's origin and price.</p>
+
+    <div class="row">
+      <h3>Africa</h3>
+      <p>Bold spices, slow cooking and generous flavours from across the continent.</p>
+      <div class="dishes">
+        <p class="dish">Cape Malay Bobotie<em>South Africa</em><span>R178</span></p>
+      </div>
+    </div>
+    <div class="row">
+      <h3>Asia</h3>
+      <p>Comforting bowls and balanced sweet, savoury and umami notes.</p>
+      <div class="dishes">
+        <p class="dish">Miso-glazed Aubergine<em>Japan</em><span>R152</span></p>
+      </div>
+    </div>
+    <div class="row">
+      <h3>Europe</h3>
+      <p>Rustic favourites inspired by Portugal, Italy and France.</p>
+      <div class="dishes">
+        <p class="dish">Wild Mushroom Risotto<em>Italy</em><span>R175</span></p>
+      </div>
+    </div>
+    <div class="row">
+      <h3>Mexico</h3>
+      <p>Toasted chillies, fresh lime and lively salsas from across Mexico.</p>
+      <div class="dishes">
+        <p class="dish">Oaxaca Chicken Mole<em>Oaxaca, Mexico</em><span>R198</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="book" aria-labelledby="booking-title">
+  <div class="wrap">
+    <div>
+      <h2 id="booking-title">Request a table</h2>
+      <p class="booking-copy">Choose your date, time and party size. We’ll confirm your reservation by phone.</p>
+    </div>
+    <form id="resForm">
+      <div class="two">
+        <label>Name<input type="text" name="name" required autocomplete="name"></label>
+        <label>Guests
+          <select name="guests"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option></select>
+        </label>
+      </div>
+      <div class="two">
+        <label>Date<input type="date" name="date" required></label>
+        <label>Time
+          <select name="time" required>
+            <option>12:00</option><option>13:00</option><option>14:00</option>
+            <option>18:00</option><option>19:00</option><option selected>20:00</option><option>21:00</option>
+          </select>
+        </label>
+      </div>
+      <button class="btn" type="submit">Request this table</button>
+      <p id="msg" role="status" aria-live="polite"><span class="status-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><span class="status-message"></span></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="index.html"><img src="logo.png" alt="Savora Avenue logo"><span class="logo-part logo-smoke" aria-hidden="true"></span><span class="logo-part logo-utensils" aria-hidden="true"></span></a>
+  
+  </div>
+</footer>
+
+<script>
+document.getElementById('resForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var f = e.target;
+  var status = document.getElementById('msg');
+  status.classList.remove('is-success');
+  void status.offsetWidth;
+  status.classList.add('is-success');
+  status.querySelector('.status-message').textContent =
+    'Request sent for ' + f.guests.value + ' on ' + f.date.value + ' at ' + f.time.value + '. We will confirm by phone.';
+  f.reset();
+});
+</script>
+</body>
+</html>
