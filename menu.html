@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore the Savora Avenue menu: dishes inspired by African, Asian, European and Mexican kitchens, plus drinks for the table.">
+  <title>Our Menu | Savora Avenue</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Hanken+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --pine:#27243f;--pine-2:#34304e;--saffron:#aa4d39;--paper:#f3ead8;
+      --ink:#f3ead8;--mute:#d3c8b7;--serif:'Times New Roman',Georgia,serif;
+      --sans:'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;
+      --olive:#111321;--gold-light:#df896c;--dark-ink:#111321;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:24px}
+    body{font-family:var(--sans);color:var(--ink);background:var(--olive);line-height:1.7;font-size:17px}
+    a{color:inherit}
+    :focus-visible{outline:3px solid var(--gold-light);outline-offset:3px}
+    .wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+    header{background:var(--pine);color:var(--paper);border-bottom:1px solid rgba(198,107,82,.35)}
+    nav{display:flex;align-items:center;justify-content:space-between;padding:25px 0;gap:20px}
+    .logo{position:relative;display:inline-flex;flex:0 0 auto;line-height:0;text-decoration:none}
+    .logo img{display:block;width:150px;height:100px;object-fit:contain;transition:transform .25s ease,filter .25s ease}
+    .logo-part{position:absolute;z-index:2;border:0;background:transparent;cursor:pointer}
+    .logo-smoke{left:50%;top:3%;width:25%;height:24%;transform:translateX(-50%)}
+    .logo-utensils{left:41%;top:38%;width:22%;height:17%}
+    .logo-smoke::before,.logo-smoke::after{content:"";position:absolute;bottom:-5%;width:30%;height:82%;border-radius:52% 48% 50% 50%;border-left:2px solid rgba(255,248,224,.92);border-top:1px solid rgba(255,248,224,.28);filter:blur(1px);opacity:0;pointer-events:none}
+    .logo-smoke::before{left:27%;animation:smoke-drift 2.4s ease-in-out infinite}
+    .logo-smoke::after{right:22%;height:68%;animation:smoke-drift 2.8s .55s ease-in-out infinite}
+    .logo-utensils::before,.logo-utensils::after{content:none}
+    .logo:has(.logo-utensils:hover) img{animation:utensils-wiggle .65s ease-in-out infinite alternate;filter:brightness(1.1) drop-shadow(0 5px 8px rgba(223,137,108,.22))}
+    @keyframes smoke-drift{0%{transform:translate(3px,10px) scale(.65) rotate(-12deg);opacity:0}20%{opacity:.85}55%{transform:translate(-5px,-5px) scale(.9) rotate(9deg)}100%{transform:translate(7px,-22px) scale(1.2) rotate(-6deg);opacity:0}}
+    @keyframes utensils-wiggle{from{transform:rotate(-1deg) translateY(1px)}to{transform:rotate(1deg) translateY(-2px)}}
+    nav ul{display:flex;gap:28px;list-style:none;align-items:center}
+    nav ul a{text-decoration:none;font-weight:500;font-size:.9rem;letter-spacing:.04em}
+    nav ul a:hover,nav ul a[aria-current="page"]{color:var(--gold-light)}
+    .btn{display:inline-block;background:var(--saffron);color:var(--dark-ink);font-weight:700;text-decoration:none;padding:13px 24px;border-radius:2px;border:1px solid var(--saffron);letter-spacing:.06em;text-transform:uppercase;transition:background .2s,border-color .2s}
+    .btn:hover{background:var(--gold-light);border-color:var(--gold-light)}
+    .hero{padding:70px 0 56px;background:radial-gradient(ellipse at 82% 45%,var(--pine-2) 0%,var(--pine) 68%);text-align:center}
+    .eyebrow{color:var(--gold-light);font-size:.78rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
+    h1,.section-title{font-family:'Great Vibes',cursive;font-weight:400;color:transparent;background:linear-gradient(110deg,#a87924 0%,#e8cb7c 28%,#fff2bb 43%,#c3963e 53%,#f2dc94 68%,#a87924 100%);background-size:220% 100%;background-position:100% 0;-webkit-background-clip:text;background-clip:text;animation:shine 5s ease-in-out infinite}
+    h1{margin-top:8px;font-size:clamp(4rem,8vw,6.6rem);line-height:1.15}
+    .hero-copy{max-width:57ch;margin:12px auto 28px;color:var(--mute);font-size:1.08rem}
+    .menu-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:0 auto}
+    .menu-nav a{padding:8px 15px;border:1px solid rgba(198,107,82,.45);border-radius:2px;color:var(--paper);text-decoration:none;font-size:.9rem;transition:background .2s,border-color .2s,color .2s}
+    .menu-nav a:hover{background:var(--saffron);border-color:var(--saffron);color:var(--dark-ink)}
+    .template-note{margin-top:22px;color:var(--mute);font-size:.88rem}
+    .menu-section{padding:76px 0;background:var(--olive)}
+    .menu-section:nth-of-type(even){background:var(--pine);border-top:1px solid rgba(198,107,82,.25);border-bottom:1px solid rgba(198,107,82,.25)}
+    .section-heading{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:32px}
+    .section-title{font-size:clamp(3rem,5vw,4.2rem);line-height:1.15}
+    .section-heading p{max-width:40ch;color:var(--mute);font-size:.95rem}
+    .dish-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+    .dish-card{overflow:hidden;background:var(--paper);color:var(--dark-ink);border:1px solid rgba(198,107,82,.45);box-shadow:0 10px 24px rgba(18,22,14,.14)}
+    .photo-slot{aspect-ratio:4/3;display:grid;place-items:center;position:relative;margin:10px 10px 0;border:1px solid var(--saffron);background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.02)),repeating-linear-gradient(45deg,rgba(198,107,82,.12),rgba(198,107,82,.12) 10px,transparent 10px,transparent 20px);color:var(--ink)}
+    .photo-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .photo-slot span{display:grid;place-items:center;position:relative;z-index:1;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--paper);background:rgba(17,19,33,.42);padding:8px 14px;border:1px solid rgba(198,107,82,.7)}
+    .dish-copy{padding:17px 19px 20px}
+    .dish-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+    .dish-top h3{font-family:var(--serif);font-size:1.18rem;line-height:1.35;font-weight:400}
+    .price{white-space:nowrap;color:var(--gold-light);font-size:.95rem;font-weight:700}
+    .dish-copy p{margin-top:7px;color:var(--mute);font-size:.91rem;line-height:1.55}
+    .dietary{display:inline-block;margin-top:12px;color:var(--gold-light);font-size:.72rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase}
+    .drinks .dish-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .drink-card{padding:20px;background:var(--paper);color:var(--dark-ink);border:1px solid rgba(198,107,82,.45)}
+    .drink-card .dish-top h3{font-size:1.08rem}
+    .drink-card p{margin-top:6px;color:var(--mute);font-size:.89rem;line-height:1.55}
+    .drink-type{display:block;margin-bottom:7px;color:var(--gold-light);font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+    .closing{padding:72px 0;background:var(--pine);border-top:1px solid rgba(198,107,82,.35);text-align:center}
+    .closing h2{font-family:var(--serif);font-size:clamp(2rem,4vw,2.8rem);font-weight:400;line-height:1.2}
+    .closing p{max-width:52ch;margin:14px auto 24px;color:var(--mute)}
+    footer{padding:38px 0;background:var(--pine);color:var(--mute);border-top:1px solid rgba(198,107,82,.35);font-size:.95rem}
+    footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+    .footer-note{font-size:.88rem}
+    @media(max-width:860px){
+      .dish-grid,.drinks .dish-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .section-heading{align-items:flex-start;flex-direction:column;gap:10px}
+      nav ul li:not(:last-child){display:none}
+    }
+    @media(max-width:560px){
+      .wrap{padding:0 20px}
+      nav{padding:20px 0}
+      .hero{padding:54px 0 42px}
+      .menu-section{padding:58px 0}
+      .dish-grid,.drinks .dish-grid{grid-template-columns:1fr}
+      .template-note{font-size:.82rem}
+      footer .wrap{align-items:flex-start;flex-direction:column}
+    }
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      h1,.section-title{animation:none;background-position:50% 0}
+    }
+    h1,.section-title{font-family:var(--serif);font-weight:700;color:var(--ink);background:none;animation:none}
+    .hero-copy{color:var(--mute)}
+    .dish-card,.drink-card{color:var(--dark-ink)}
+    .dish-copy p,.drink-card p{color:#514d5f}
+    .price,.drink-type,.dietary{color:var(--saffron)}
+    .photo-slot{background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.02)),repeating-linear-gradient(45deg,rgba(198,107,82,.12),rgba(198,107,82,.12) 10px,transparent 10px,transparent 20px);color:var(--ink)}
+    .btn{color:var(--ink)}
+    nav ul a:not(.btn){color:var(--ink)}
+    nav ul a:not(.btn):hover,nav ul a:not(.btn)[aria-current="page"]{color:var(--gold-light)}
+    .btn.ghost{color:var(--ink)}
+    .btn:hover{background:#903e2d;border-color:#903e2d}
+    footer{color:var(--mute)}
+    @media(max-width:980px){
+      nav{flex-wrap:wrap;padding:18px 0;gap:12px}
+      nav ul{flex:1 1 100%;justify-content:center;flex-wrap:wrap;gap:8px clamp(12px,3vw,24px)}
+      nav ul li:not(:last-child){display:list-item}
+      nav ul a{display:flex;min-height:44px;align-items:center;padding:6px 4px}
+      nav ul .btn{padding:10px 16px}
+    }
+    @media(max-width:560px){
+      .wrap{padding-right:18px;padding-left:18px}
+      .logo img{width:132px;height:88px}
+      nav{padding:14px 0}
+      nav ul{column-gap:12px;row-gap:2px}
+      nav ul a{font-size:.84rem}
+      h1{font-size:clamp(3rem,12vw,4rem);line-height:1.06}
+      .hero{padding:50px 0 40px}
+      .menu-section{padding:56px 0}
+      .section-heading{margin-bottom:24px}
+      .section-title{font-size:clamp(2.5rem,10vw,3.4rem)}
+      .dish-copy{padding:16px}
+      .closing{padding:58px 0}
+      footer .wrap{align-items:flex-start;flex-direction:column}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav aria-label="Main navigation">
+        <a class="logo" href="index.html"><img src="logo.png" alt="Savora Avenue logo"><span class="logo-part logo-smoke" aria-hidden="true"></span><span class="logo-part logo-utensils" aria-hidden="true"></span></a>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html" aria-current="page">Menu</a></li>
+          <li><a href="occasions.html">Occasions</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a class="btn" href="index.html#book">Book a table</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="menu-title">
+      <div class="wrap">
+        <p class="eyebrow">Good food, best shared</p>
+        <h1 id="menu-title">A seat for every flavour.</h1>
+        <p class="hero-copy">Take a little journey from the African continent to Asia, Europe and the Americas. Order a favourite or fill the table with something new.</p>
+        <nav class="menu-nav" aria-label="Menu sections">
+          <a href="#african">African</a>
+          <a href="#asian">Asian</a>
+          <a href="#european">European</a>
+          <a href="#mexican">Mexican</a>
+          <a href="#desserts">Desserts</a>
+          <a href="#drinks">Drinks</a>
+        </nav>
+    
+      </div>
+    </section>
+
+    <section class="menu-section" id="african" aria-labelledby="african-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <div><p class="eyebrow">From the African continent</p><h2 class="section-title" id="african-title">African</h2></div>
+          <p>Fragrant spices, slow cooking and bright, generous flavours inspired by the kitchens of Southern and West Africa.</p>
+        </div>
+        <div class="dish-grid">
+          <article class="dish-card">
+            <div class="photo-slot"><img src="bobotie.jpg" alt="Cape Malay bobotie"></div>
+            <div class="dish-copy"><div class="dish-top"><h3>Cape Malay Bobotie</h3><span class="price">R178</span></div><p>Gently spiced minced beef, golden egg custard, turmeric rice and apricot chutney.</p><span class="dietary">Cape Malay · Contains egg</span></div>
+          </article>
+          <article class="dish-card">
+            <div class="photo-slot"><img src="prawns.jpg" alt="Mozambican peri-peri prawns"></div>
+            <div class="dish-copy"><div class="dish-top"><h3>Mozambican Peri-peri Prawns</h3><span class="price">R205</span></div><p>Flame-grilled prawns, chilli-garlic butter, charred lemon and warm bread.</p><span class="dietary">Mozambique · Shellfish</span></div>
+          </article>
+          <article class="dish-card">
+            <div class="photo-slot"><img src="stew.jpg" alt="West African peanut stew"></div>
+            <div class="dish-copy"><div class="dish-top"><h3>West African Peanut Stew</h3><span class="price">R158</span></div><p>Sweet potato and greens simmered in a rich peanut-tomato sauce, served with rice.</p><span class="dietary">Plant-based · Contains peanuts</span></div>
+          </article>
+          <article class="dish-card">
+            <div class="photo-slot"><img src="buny.jpg" alt="Durban lamb bunny chow"></div>
+            <div class="dish-copy"><div class="dish-top"><h3>Durban Lamb Bunny Chow</h3><span class="price">R185</span></div><p>Slow-braised lamb curry in a hollowed loaf, with sambals and fresh coriander.</p><span class="dietary">South African · Mild heat</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-section" id="asian" aria-labelledby="asian-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <div><p class="eyebrow">From across Asia</p><h2 class="section-title" id="asian-title">Asian</h2></div>
+          <p>Comforting bowls and balanced sweet, savoury and umami notes, with something for plant lovers too.</p>
+        </div>
+        <div class="dish-grid">
+          <article class="dish-card">
+            <div class="photo-slot"><img src="mizo.jpg" alt="Japanese miso-glazed aubergine"></div>
+            <div class="dish-copy"><div class="dish-top"><h3>Miso-glazed Aubergine</h3><span class="price">R152</span></div><p>Silky roasted aubergine, sweet white miso, sesame and steamed rice.</p><span class="dietary">Japanese · Plant-based</span></div>
+          </article>
+          <article class="dish-card">
+            <div class="photo-slot"><img src="chicken.jpg" alt="Korean-style crispy chicken"></div>
+            <div class="dish-copy"><div class="dish-top"><h3>Korean-style Crispy Chicken</h3><span class="price">R188</span></div><p>Crunchy chicken tossed in a sticky gochujang glaze, with pickled cucumber.</p><span class="dietary">Korean-inspired · Contains gluten</span></div>
+          </article>
+          <article class="dish-card">
+            <div class="photo-slot"><img src="veg.jpg" alt="Thai green vegetable curry"></div>
+            <div class="dish-copy"><div class="dish-top"><h3>Thai Green Vegetable Curry</h3><span class="price">R165</span></div><p>Coconut curry with seasonal vegetables, Thai basil and jasmine rice.</p><span class="dietary">Thai-inspired · Plant-based</span></div>
+          </article>
+          <article class="dish-card">
+            <div class="photo-slot"><img src="soy.jpg" alt="Ginger-soy glazed salmon"></div>
+            <div class="dish-copy"><div class="dish-top"><h3>Ginger-soy Glazed Salmon</h3><span class="price">R220</span></div><p>Seared salmon, fragrant ginger-soy glaze, greens and sesame rice.</p><span class="dietary">Asian-inspired · Contains fish and soy</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-section" id="european" aria-labelledby="european-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <div><p class="eyebrow">From around Europe</p><h2 class="section-title" id="european-title">European</h2></div>
+          <p>Rustic favourites inspired by Portugal, Italy and France, made for lingering over good conversation.</p>
+        </div>
+        <div class="dish-grid">
+          <article class="dish-card">
+            <div class="photo-slot"><img src="peri.jpg" alt="Portuguese peri-peri chicken"></div>
+            <div class="dish-copy"><div class="dish-top"><h3>Portuguese Peri-peri Chicken</h3><span class="price">R195</span></div><p>Charcoal-grilled chicken, house chilli marinade, lemon and crisp potatoes.</p><span class="dietary">Portugal · Medium heat</span></div>
+          </article>
+          <article class="dish-card">
+            <div class="photo-slot"><img src="mushroom.jpg" alt="Italian wild mushroom risotto"></div>
+            <div class="dish-copy"><div class="dish-top"><h3>Wild Mushroom Risotto</h3><span class="price">R175</span></div><p>Creamy arborio rice, woodland mushrooms, thyme and aged parmesan.</p><span class="dietary">Italian-inspired · Vegetarian</span></div>
+          </article>
+          <article class="dish-card">
+            <div class="photo-slot"><img src="wine.jpg" alt="French red wine-braised beef"></div>
+            <div class="dish-copy"><div class="dish-top"><h3>Red Wine-braised Beef</h3><span class="price">R225</span></div><p>Slow-cooked beef, silky pan sauce, buttery mash and seasonal greens.</p><span class="dietary">French-inspired · Contains dairy</span></div>
+          </article>
+          <article class="dish-card">
+            <div class="photo-slot"><img src="cake.jpg" alt="Portuguese salt cod cakes"></div>
+            <div class="dish-copy"><div class="dish-top"><h3>Salt Cod Cakes</h3><span class="price">R168</span></div><p>Crisp golden cod and potato fritters with lemon aioli and fresh herbs.</p><span class="dietary">Portugal · Contains fish and egg</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-section" id="mexican" aria-labelledby="mexican-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <div><p class="eyebrow">From the Americas</p><h2 class="section-title" id="mexican-title">Mexican</h2></div>
+          <p>Toasted chillies, fresh lime and lively salsas bring a little sunshine to every plate.</p>
+        </div>
+        <div class="dish-grid">
+          <article class="dish-card">
+            <div class="photo-slot"><img src="mole.jpg" alt="Oaxaca chicken mole"></div>
+            <div class="dish-copy"><div class="dish-top"><h3>Oaxaca Chicken Mole</h3><span class="price">R198</span></div><p>Tender chicken, deep chilli-and-cocoa mole, sesame and warm corn tortillas.</p><span class="dietary">Oaxacan-inspired · Contains sesame</span></div>
+          </article>
+          <article class="dish-card">
+            <div class="photo-slot"><img src="taco.jpg" alt="Baja-style fish tacos"></div>
+            <div class="dish-copy"><div class="dish-top"><h3>Baja-style Fish Tacos</h3><span class="price">R182</span></div><p>Crisp fish, soft corn tortillas, crunchy cabbage and zingy lime crema.</p><span class="dietary">Mexican-inspired · Contains fish and dairy</span></div>
+          </article>
+          <article class="dish-card">
+            <div class="photo-slot"><img src="corn.jpg" alt="Roasted corn and black bean tacos"></div>
+            <div class="dish-copy"><div class="dish-top"><h3>Roasted Corn &amp; Black Bean Tacos</h3><span class="price">R158</span></div><p>Smoky corn, black beans, avocado salsa and pickled red onion in corn tortillas.</p><span class="dietary">Mexican-inspired · Plant-based</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-section desserts" id="desserts" aria-labelledby="desserts-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <div><p class="eyebrow">Sweet endings</p><h2 class="section-title" id="desserts-title">Desserts</h2></div>
+          <p>End the meal with something warm, rich, bright or crunchy — whatever the table is in the mood for.</p>
+        </div>
+        <div class="dish-grid">
+          <article class="dish-card">
+            <div class="photo-slot"><img src="malva.jpg" alt="Cape Malva pudding"></div>
+            <div class="dish-copy"><div class="dish-top"><h3>Cape Malva Pudding</h3><span class="price">R106</span></div><p>Warm apricot sponge, caramel sauce and vanilla bean cream.</p><span class="dietary">South African dessert</span></div>
+          </article>
+          <article class="dish-card">
+            <div class="photo-slot"><img src="mango.jpg" alt="Mango sticky rice"></div>
+            <div class="dish-copy"><div class="dish-top"><h3>Mango Sticky Rice</h3><span class="price">R98</span></div><p>Sweet coconut rice, ripe mango and toasted sesame with a light palm-sugar finish.</p><span class="dietary">Thai-inspired dessert</span></div>
+          </article>
+          <article class="dish-card">
+            <div class="photo-slot"><img src="tiramisu.jpg" alt="Tiramisu dessert"></div>
+            <div class="dish-copy"><div class="dish-top"><h3>Tiramisu</h3><span class="price">R102</span></div><p>Coffee-soaked sponge, mascarpone cream and cocoa dusted finish.</p><span class="dietary">Japanese dessert</span></div>
+          </article>
+          <article class="dish-card">
+            <div class="photo-slot"><img src="churros.jpg" alt="Churros with cajeta"></div>
+            <div class="dish-copy"><div class="dish-top"><h3>Churros with Cajeta</h3><span class="price">R96</span></div><p>Crisp churros dusted with cinnamon sugar and served with dulce de leche drizzle.</p><span class="dietary">Mexican dessert</span></div>
+          </article>
+          <article class="dish-card">
+            <div class="photo-slot"><img src="pots%20de%20creme.jpg" alt="Chocolate pots de creme"></div>
+            <div class="dish-copy"><div class="dish-top"><h3>Chocolate Pots de Crème</h3><span class="price">R104</span></div><p>Silky dark chocolate custard with a whipped cream finish and cocoa nib crunch.</p><span class="dietary">French-inspired dessert</span></div>
+          </article>
+          <article class="dish-card">
+            <div class="photo-slot"><img src="berry.jpg" alt="Berry cheesecake"></div>
+            <div class="dish-copy"><div class="dish-top"><h3>Berry Cheesecake</h3><span class="price">R100</span></div><p>Velvety cream cheese filling layered with berry compote on a crisp biscuit base.</p><span class="dietary">Classic dessert</span></div>
+          </article>
+          <article class="dish-card">
+            <div class="photo-slot"><img src="apple.jpg" alt="Warm apple crumble"></div>
+            <div class="dish-copy"><div class="dish-top"><h3>Warm Apple Crumble</h3><span class="price">R94</span></div><p>Baked apples with cinnamon, oat crumble and vanilla cream.</p><span class="dietary">Comfort dessert</span></div>
+          </article>
+          <article class="dish-card">
+            <div class="photo-slot"><img src="tart.jpg" alt="Banoffee tart"></div>
+            <div class="dish-copy"><div class="dish-top"><h3>Banoffee Tart</h3><span class="price">R99</span></div><p>Caramelised banana, rich toffee cream and a buttery biscuit crust.</p><span class="dietary">Sweet &amp; caramelised</span></div>
+          </article>
+          <article class="dish-card">
+            <div class="photo-slot"><img src="cheesecake.jpg" alt="Mini cheesecake trio"></div>
+            <div class="dish-copy"><div class="dish-top"><h3>Mini Cheesecake Trio</h3><span class="price">R105</span></div><p>A tasting of berry, caramel and vanilla cheesecake bites with fresh cream.</p><span class="dietary">Sharing dessert</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-section drinks" id="drinks" aria-labelledby="drinks-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <div><p class="eyebrow">Something to sip</p><h2 class="section-title" id="drinks-title">Drinks</h2></div>
+          <p>A few refreshing favourites, from house-made coolers to a pour for the end of the evening.</p>
+        </div>
+        <div class="dish-grid">
+          <article class="drink-card"><span class="drink-type">House cooler · 0% alcohol</span><div class="dish-top"><h3>Ginger &amp; Lime Fizz</h3><span class="price">R68</span></div><p>Fresh lime, ginger syrup, soda and mint.</p></article>
+          <article class="drink-card"><span class="drink-type">House cooler · 0% alcohol</span><div class="dish-top"><h3>Passionfruit Iced Tea</h3><span class="price">R65</span></div><p>Black tea, passionfruit and a touch of citrus.</p></article>
+          <article class="drink-card"><span class="drink-type">House cooler · 0% alcohol</span><div class="dish-top"><h3>Watermelon &amp; Basil Spritz</h3><span class="price">R68</span></div><p>Fresh watermelon, fragrant basil and sparkling water.</p></article>
+          <article class="drink-card"><span class="drink-type">Classic · 0% alcohol</span><div class="dish-top"><h3>Homemade Lemonade</h3><span class="price">R58</span></div><p>Freshly squeezed lemons, lightly sweetened and served cold.</p></article>
+          <article class="drink-card"><span class="drink-type">Tea · 0% alcohol</span><div class="dish-top"><h3>Rooibos &amp; Honey</h3><span class="price">R48</span></div><p>Locally loved rooibos, brewed fresh and finished with honey.</p></article>
+          <article class="drink-card"><span class="drink-type">Coffee · 0% alcohol</span><div class="dish-top"><h3>Espresso</h3><span class="price">R45</span></div><p>A short, rich single shot. Ask us about oat milk for your cappuccino.</p></article>
+          <article class="drink-card"><span class="drink-type">Classic cocktail</span><div class="dish-top"><h3>Classic Margarita</h3><span class="price">R105</span></div><p>Tequila, fresh lime and orange liqueur, with a salted rim.</p></article>
+          <article class="drink-card"><span class="drink-type">Classic cocktail</span><div class="dish-top"><h3>Paloma</h3><span class="price">R102</span></div><p>Tequila, grapefruit, lime and sparkling soda.</p></article>
+          <article class="drink-card"><span class="drink-type">House cocktail</span><div class="dish-top"><h3>Passionfruit Martini</h3><span class="price">R115</span></div><p>Vodka, passionfruit and vanilla with a bright citrus finish.</p></article>
+          <article class="drink-card"><span class="drink-type">Wine · 150 ml</span><div class="dish-top"><h3>House White</h3><span class="price">R88</span></div><p>A crisp, easy-drinking South African white wine.</p></article>
+          <article class="drink-card"><span class="drink-type">Wine · 150 ml</span><div class="dish-top"><h3>House Red</h3><span class="price">R92</span></div><p>A smooth, fruit-forward South African red wine.</p></article>
+          <article class="drink-card"><span class="drink-type">Beer · 330 ml</span><div class="dish-top"><h3>Local Craft Lager</h3><span class="price">R72</span></div><p>A refreshing, locally brewed lager, served chilled.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing" aria-labelledby="closing-title">
+      <div class="wrap">
+        <p class="eyebrow">Pull up a chair</p>
+        <h2 id="closing-title">Good things are better shared.</h2>
+        <p>Found something you’d love to try? We’ll save you a place.</p>
+        <a class="btn" href="index.html#book">Request a table</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <a class="logo" href="index.html"><img src="logo.png" alt="Savora Avenue logo"><span class="logo-part logo-smoke" aria-hidden="true"></span><span class="logo-part logo-utensils" aria-hidden="true"></span></a>
+      <p class="footer-note">Different kitchens. One table.</p>
+    </div>
+  </footer>
+</body>
+</html>
